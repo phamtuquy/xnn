@@ -22,6 +22,12 @@ class EntryModel extends CI_Model {
         $query = $this->db->get('postentry', 10);
         return $query->result();
     }
+    
+    function get_by_id($id)
+    {
+        $query = $this->db->query('SELECT * FROM postentry WHERE id = ' . $id);
+        return $query -> row();
+    }
 	
 	function add($entry)
 	{

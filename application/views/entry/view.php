@@ -1,0 +1,1 @@
+<img src="<?php echo base_url()?>/public/upload/<?php echo $postentry->imageurl; ?>">

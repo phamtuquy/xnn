@@ -44,6 +44,7 @@ $route['404_override'] = '';
 $route['entry'] = 'entry/index';
 $route['test1'] = 'test/index';
 $route['entry/(:any)/(:num)'] = 'entry/index/$1/$2';
+$route['xinh/(:num)'] = 'entry/view/$1';
 
 $route['admin/newentry'] = 'admin/postentry/newentry';
 

@@ -21,4 +21,13 @@ class Entry extends userController {
 			$this->loadView('entry/index', $data);	
 		}
 	}
+	
+	public function view($id = null)
+	{
+	    $this->load->model('entrymodel');
+	    
+	    $data["postentry"] = $this->entrymodel->get_by_id($id);
+	    
+	    $this->loadView('entry/view', $data);
+	}
 }
