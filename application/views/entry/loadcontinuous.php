@@ -1,6 +1,6 @@
 <?php
 				//echo ($firstentries);
-				echo ($last_msg_id);
+				//echo ($last_msg_id);
 				if (isset($nextentries) && !empty($nextentries)) {
                 	foreach ($nextentries as $key => $value ){//$key => $value) {
 			?>

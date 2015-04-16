@@ -9,7 +9,7 @@
 
 	<body>
 		<!-- div class="header"><span class="header_capital">X</span>inh <span class="header_capital">N</span>hẹ <span class="header_capital">N</span>hàng</div -->
-		<div class="header"><img src="<?php echo base_url()?>public/ui/logo4.png" height="42px"></div>
+		<div class="header"><a href="/"><img src="<?php echo base_url()?>public/ui/logo4.png" height="42px"></a></div>
 		<br>
 		<br>
 		<br>

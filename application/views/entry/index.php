@@ -38,3 +38,4 @@
 			
 			<div id="last_msg_loader"></div>
 		</div>
+
