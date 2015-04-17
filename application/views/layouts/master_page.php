@@ -13,6 +13,7 @@
         <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema" />
 
 		<title><?php echo $title ?></title>
+		<link rel="shortcut icon" href="/public/ui/fav.ico" type="image/x-icon">
 		<script type="text/javascript" src="<?php echo base_url()?>public/scripts/jquery-1.2.6.pack.js"></script>
 		<link rel="stylesheet" href="<?php echo base_url()?>public/css/style.css">
 	</head>
