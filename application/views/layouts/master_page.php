@@ -14,7 +14,8 @@
 
 		<title><?php echo $title ?></title>
 		<link rel="shortcut icon" href="/public/ui/fav.ico" type="image/x-icon">
-		<script type="text/javascript" src="<?php echo base_url()?>public/scripts/jquery-1.2.6.pack.js"></script>
+		<!-- script type="text/javascript" src="<?php echo base_url()?>public/scripts/jquery-1.2.6.pack.js"></script -->
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 		<link rel="stylesheet" href="<?php echo base_url()?>public/css/style.css">
 	</head>
 
