@@ -51,8 +51,6 @@ class PostEntry extends adminController {
 			$this->entrymodel->add($entry);
 
 		} else {
-			
-			error_log ("load view: admin - new entry\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
 			$this -> loadView('admin/entry/newentry');
 		}
 	}
