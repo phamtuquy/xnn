@@ -1,0 +1,15 @@
+/************************
+	DARK THEME
+*************************/
+.basicpopup-overlay {
+  background: #000;
+  opacity: .7; }
+
+.basicpopup-content {
+  max-width: 100%; /* Quy */
+  border: 1px solid #ddd;
+  padding: 0px; /* Quy */
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+  max-height: 100%; /* Quy */
+  overflow-y: auto;
+  background: #fff; }

@@ -30,4 +30,13 @@ class Entry extends userController {
 	    
 	    $this->loadView('entry/view', $data);
 	}
+	
+	public function zoom($id = null)
+	{
+	    $this->load->model('entrymodel');
+	    
+	    $data["postentry"] = $this->entrymodel->get_by_id($id);
+	    
+	    $this->load->view('entry/zoom', $data);
+	}
 }
