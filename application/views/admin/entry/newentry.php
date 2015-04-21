@@ -4,7 +4,7 @@
 
 New entry view
 
-<form action="<?php echo base_url()?>admin/postentry/newentry" class="dropzone" id="my-awesome-dropzone">
+<form action="<?php echo base_url()?>admin/newentry" class="dropzone" id="my-awesome-dropzone">
 	<div class="fallback">
 		<input name="file" type="file" multiple />
 	</div>

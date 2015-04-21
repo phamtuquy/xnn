@@ -15,12 +15,25 @@ class PostEntry extends adminController {
 			$tempFile = $_FILES['file']['tmp_name'];
 
 			//$targetPath = dirname(__FILE__) . base_url() . 'public/upload/';
-			$targetPath = base_url() . 'public/upload/';
+			$targetPath = $_SERVER['DOCUMENT_ROOT'] . parse_url(base_url() . 'public/upload/', PHP_URL_PATH);
 
-			$targetFile = $_SERVER['DOCUMENT_ROOT'] . $targetPath . $_FILES['file']['name'];
+			//$targetFile = $_SERVER['DOCUMENT_ROOT'] . $targetPath . $_FILES['file']['name'];
+			$targetFile = $targetPath . $_FILES['file']['name'];
 			//header('Location: http://google.com/' . realpath($targetFile));
 
-			move_uploaded_file($tempFile, $targetFile);
+            //error_log ($tempFile . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
+            //error_log ($targetFile . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
+            //error_log ($_SERVER['DOCUMENT_ROOT'] . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
+            //error_log ("targetPath: " . $targetPath . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
+            //error_log ($_FILES['file']['name'] . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
+
+            //error_log ((is_dir($targetPath) ? "ok path" : "not good path") . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
+
+            move_uploaded_file($tempFile, $targetFile);
+			//if (move_uploaded_file($tempFile, $targetFile))
+			//    error_log ("File moved ok" . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
+			//else
+			//    error_log ("got ERROR" . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
 			
 			$this->load->model('entrymodel');
 			
@@ -39,6 +52,7 @@ class PostEntry extends adminController {
 
 		} else {
 			
+			error_log ("load view: admin - new entry\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
 			$this -> loadView('admin/entry/newentry');
 		}
 	}
