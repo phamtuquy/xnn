@@ -1,6 +1,7 @@
 <link href="/public/plugin/simple-popup/css/basicPopup.css" rel="stylesheet" type="text/css">
 <link href="/public/plugin/simple-popup/css/basicPopupDark.css" rel="stylesheet" type="text/css">
 <script src="/public/plugin/simple-popup/js/jquery.basicPopup.js"></script>
+<script src="/public/plugin/lazyload/js/jquery.unveil.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 
@@ -25,6 +26,7 @@
 				
 				$(".img_box img").each(function (){
 				    var $id = $(this).attr("id");
+				    $(this).unveil();
 				    $(this).click(function(e){
                 		$.basicpopup({
                 			url : '/zoom/' + $id,
@@ -54,7 +56,7 @@
 			?>
                         <div id="<?php echo $value->id; ?>" class="message_box" ><?php //var_dump($value->ImageURL);?> 
 						<div class="img_box"><?php //echo $value->id; ?>
-							<img class="home_img" src="<?php echo base_url()?>/public/upload/<?php echo $value->imageurl; ?>" id=<?php echo $value->id ?> /><br>
+							<img class="home_img" src="/public/ui/bg.png" data-src="<?php echo base_url()?>/public/upload/<?php echo $value->imageurl; ?>" id=<?php echo $value->id ?> /><br>
                         </div><br>
 			<?php }
 				} ?>
