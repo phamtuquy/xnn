@@ -46,5 +46,6 @@ body {
 }
 
 .img_box img{
-	width: 600px;
+	width: 84px;
+	opacity: .7;
 }

@@ -1,15 +1,19 @@
 <script>
                 $(".img_box img").each(function (){
 				    var $id = $(this).attr("id");
-				    $(this).unveil();
+				    
+				    $(this).unveil(0, function (){
+				        $(this).load(function() {
+				            $(this).css({width : "600px", opacity : "1"});
+				        });
+				    });
+				    
 				    $(this).click(function(e){
                 		$.basicpopup({
                 			url : '/zoom/' + $id,
                 			btnClose : false
                 		}, e);
-                		
                 	});
-				    
 				});
 </script>
 <?php
@@ -20,7 +24,7 @@
 			?>
                         <div id="<?php echo $value->id; ?>" class="message_box" ><?php //var_dump($value->ImageURL);?> 
 						<div class="img_box"><?php //echo $value->id; ?>
-						<img class="home_img" src="/public/ui/bg.png" data-src="<?php echo base_url()?>/public/upload/<?php echo $value->imageurl;  ?>" id=<?php echo $value->id ?> /><br>
+						<img class="home_img" src="/public/ui/loader.gif" data-src="<?php echo base_url()?>/public/upload/<?php echo $value->imageurl;  ?>" id=<?php echo $value->id ?> /><br>
                         </div><br>
 			<?php }
 				} ?>
