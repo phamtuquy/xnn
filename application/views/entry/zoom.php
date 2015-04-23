@@ -59,7 +59,7 @@
 	</script>
 	
 	<span class='zoom' id='ex1'>
-		<img src="<?php echo base_url()?>/public/upload/<?php echo $postentry->imageurl; ?>" width="100%" height="100%" style="display: none">
+		<img src="<?php echo base_url()?>/public/upload/original/<?php echo $postentry->imageurl; ?>" width="100%" height="100%" style="display: none">
 	</span>
 	
 	<img class="logo" src="/public/ui/logo4.png" />
