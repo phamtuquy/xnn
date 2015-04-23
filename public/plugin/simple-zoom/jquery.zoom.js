@@ -257,6 +257,8 @@
 				if ($.isFunction(settings.callback)) {
 					settings.callback.call(img);
 				}
+				
+				$("#srcimage").css({display: none});
 			};
 
 			img.src = settings.url;
