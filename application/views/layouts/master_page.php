@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="<?php echo base_url()?>public/scripts/jquery-2.1.3.min.js"></script>
 		<!-- script src="http://code.jquery.com/jquery-1.11.2.min.js"></script -->
 		<link rel="stylesheet" href="<?php echo base_url()?>public/css/style.css">
-<!--
+
 <!-- Facebook Conversion Code for Xinh nh? nhàng -->
 <script>(function() {
   var _fbq = window._fbq || (window._fbq = []);
@@ -34,7 +34,7 @@ window._fbq = window._fbq || [];
 window._fbq.push(['track', '6021945295124', {'value':'1.00','currency':'VND'}]);
 </script>
 <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6021945295124&amp;cd[value]=1.00&amp;cd[currency]=VND&amp;noscript=1" /></noscript>
--->
+
 
 	</head>
 
