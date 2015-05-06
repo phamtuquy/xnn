@@ -31,6 +31,9 @@
 		<div align="center">
 			<?php $this->load->view($content); ?>
 		</div>
+		<div class="fb-icon">
+		    <a href="http://www.facebook.com/xinhnhenhang"><img width="64px" src="/public/ui/facebook-icon-red-64.png"></a>
+		</div>
 	</body>
 </html>
 
