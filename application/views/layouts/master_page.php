@@ -17,25 +17,6 @@
 		<script type="text/javascript" src="<?php echo base_url()?>public/scripts/jquery-2.1.3.min.js"></script>
 		<!-- script src="http://code.jquery.com/jquery-1.11.2.min.js"></script -->
 		<link rel="stylesheet" href="<?php echo base_url()?>public/css/style.css">
-
-<!-- Facebook Conversion Code for Xinh nh? nhàng -->
-<script>(function() {
-  var _fbq = window._fbq || (window._fbq = []);
-  if (!_fbq.loaded) {
-    var fbds = document.createElement('script');
-    fbds.async = true;
-    fbds.src = '//connect.facebook.net/en_US/fbds.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(fbds, s);
-    _fbq.loaded = true;
-  }
-})();
-window._fbq = window._fbq || [];
-window._fbq.push(['track', '6021945295124', {'value':'1.00','currency':'VND'}]);
-</script>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6021945295124&amp;cd[value]=1.00&amp;cd[currency]=VND&amp;noscript=1" /></noscript>
-
-
 	</head>
 
 	<body>
@@ -51,7 +32,7 @@ window._fbq.push(['track', '6021945295124', {'value':'1.00','currency':'VND'}]);
 			<?php $this->load->view($content); ?>
 		</div>
 		<div class="fb-icon">
-		    <a href="http://www.facebook.com/xinhnhenhang"><img width="64px" src="/public/ui/facebook-icon-red-64.png"></a>
+		    <a href="http://www.facebook.com/xinhnhenhang"><img width="64px" src="/public/ui/ec5656-facebook-64.png"></a>
 		</div>
 	</body>
 </html>
