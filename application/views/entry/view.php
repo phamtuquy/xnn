@@ -11,6 +11,7 @@
 				    $(".entry_img").unveil(0, function (){
 				        $(this).load(function() {
 				            $(this).css({width : "600px", opacity : "1"});
+				            $(".entry_img").trigger("click");
 				        });
 				    });
 				    
@@ -24,11 +25,13 @@
                 		
                 	});
 				    
-				    $(".entry_img").trigger("click");
+				    $(".entry_img").load(function (){
+				        
+				    });
                 });
 				
 </script>
 <div class="box">
-    <img id="<?php echo $postentry->id; ?>" width="1024px" class="entry_img" 
+    <img id="<?php echo $postentry->id; ?>" class="entry_img" 
         src="/public/ui/loader.gif" data-src="<?php echo base_url()?>/public/upload/<?php echo $postentry->imageurl; ?>" />
 </div>
