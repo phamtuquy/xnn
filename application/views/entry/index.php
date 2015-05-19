@@ -27,12 +27,14 @@
 				$(".img_box img").each(function (){
 				    var $id = $(this).attr("id");
 				    
+				    //lazy load image
 				    $(this).unveil(0, function (){
 				        $(this).load(function() {
 				            $(this).css({width : "600px", opacity : "1"});
 				        });
 				    });
 				    
+				    //open zoom popup when click
 				    $(this).click(function(e){
                 		$.basicpopup({
                 			url : '/zoom/' + $id,
