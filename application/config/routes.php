@@ -47,6 +47,9 @@ $route['entry/(:any)/(:num)'] = 'entry/index/$1/$2';
 $route['xinh/(:num)'] = 'entry/view/$1';
 $route['zoom/(:num)'] = 'entry/zoom/$1';
 
+$route['tuyet'] = 'entry/multiple/1';
+$route['tuyet/(:num)'] = 'entry/multiple/$1';
+
 $route['admin/newentry'] = 'admin/postentry/newentry';
 
 

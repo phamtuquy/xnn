@@ -23,6 +23,13 @@ class EntryModel extends CI_Model {
         return $query->result();
     }
     
+    function get_multiple_by_paging($page)
+    {
+        $this->db->order_by('id', 'desc');
+        $query = $this->db->get('postentry', 50);
+        return $query->result();
+    }
+    
     function get_by_id($id)
     {
         $query = $this->db->query('SELECT * FROM postentry WHERE id = ' . $id);
