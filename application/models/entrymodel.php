@@ -23,11 +23,18 @@ class EntryModel extends CI_Model {
         return $query->result();
     }
     
-    function get_multiple_by_paging($page)
+    function get_multiple_by_paging($per_page, $page)
     {
-        $this->db->order_by('id', 'desc');
-        $query = $this->db->get('postentry', 50);
+        $start = ($page - 1) * $per_page;
+        
+        $query = $this->db->query("SELECT * FROM postentry ORDER BY Id DESC LIMIT $start, $per_page");
         return $query->result();
+    }
+    
+    function get_total_count()
+    {
+        $query = $this->db->query('SELECT count(id) as totalcount FROM postentry');
+        return $query -> row() -> totalcount;
     }
     
     function get_by_id($id)

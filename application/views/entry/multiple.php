@@ -16,6 +16,9 @@
                 });
 </script>
 
+<?php 
+    echo $pagination
+?>
 <div style="width: 100%; background-color: #fff" id="wrapper">
     <div id="mygallery" >
     <?php

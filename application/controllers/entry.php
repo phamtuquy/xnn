@@ -42,18 +42,29 @@ class Entry extends userController {
 	
 	public function multiple($page = null)
 	{
+		$this->load->model('entrymodel');
+		
+		$total_count = $this->entrymodel->get_total_count();
+		$number_per_page = 50;
+		
 		$this->load->library('pagination');
 
-		$config['total_rows'] = 200;
-		$config['per_page'] = 20;
+		$config['total_rows'] = $total_count;
+		$config['per_page'] = $number_per_page;
+		$config['base_url'] = '/tuyet/';
+		$config['uri_segment'] = 2;
+		$config['use_page_numbers'] = TRUE;
+		$config['first_link'] = 'Đầu';
+		$config['last_link'] = 'Cuối';
+		$config['full_tag_open'] = '<div class=paging_box>';
+		$config['full_tag_close'] = '</div>';
+		$config['attributes'] = array('class' => 'paging');
 
 		$this->pagination->initialize($config);
 
 		$data["pagination"] = $this->pagination->create_links();
 		
-		$this->load->model('entrymodel');
-		
-		$data["postentry"] = $this->entrymodel->get_multiple_by_paging($page);
+		$data["postentry"] = $this->entrymodel->get_multiple_by_paging($config['per_page'], $page);
 		
 		$this->loadView('entry/multiple', $data);
 		
