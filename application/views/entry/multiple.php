@@ -13,8 +13,31 @@
                         lastRow : 'nojustify',
                         margins : 3
                     });
+                    
+                    $(".entry_img").each(function (){
+    				    var $id = $(this).attr("id");
+    				    
+    				    //open zoom popup when click
+    				    $(this).click(function(e){
+                    		$.basicpopup({
+                    			url : '/zoom/' + $id,
+                    			btnClose : false
+                    		}, e);
+                    		
+                    	});
+				    
+				    
+				    });
                 });
 </script>
+
+<style>
+		    .entry_img{
+                cursor: -moz-zoom-in; 
+                cursor: -webkit-zoom-in; 
+                cursor: zoom-in;
+            }
+		</style>
 
 <?php 
     echo $pagination
@@ -26,8 +49,8 @@
     		if (isset($postentry) && !empty($postentry)) {
                 foreach ($postentry as $key => $value ){//$key => $value) {
     ?>
-                    <a href="#">
-    				    <img class="home_img_getrid" src="<?php echo base_url()?>/public/upload/<?php echo $value->imageurl; ?>" id=<?php echo $value->id ?> />
+                    <a href="/" onclick="return false;">
+    				    <img class="entry_img" src="<?php echo base_url()?>/public/upload/<?php echo $value->imageurl; ?>" id=<?php echo $value->id ?> />
     				</a>
     <?php }
         } ?>

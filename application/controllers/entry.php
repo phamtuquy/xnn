@@ -48,17 +48,28 @@ class Entry extends userController {
 		$number_per_page = 50;
 		
 		$this->load->library('pagination');
-
+		
+		$open_tag = '<div class=paging_link_box>';
+		$close_tag = "</div>";
+		
 		$config['total_rows'] = $total_count;
 		$config['per_page'] = $number_per_page;
 		$config['base_url'] = '/tuyet/';
 		$config['uri_segment'] = 2;
 		$config['use_page_numbers'] = TRUE;
+		
 		$config['first_link'] = 'Đầu';
 		$config['last_link'] = 'Cuối';
-		$config['full_tag_open'] = '<div class=paging_box>';
+		$config['full_tag_open'] = '<div class=paging_container>';
 		$config['full_tag_close'] = '</div>';
-		$config['attributes'] = array('class' => 'paging');
+		
+		$config['num_tag_open'] = $config['first_tag_open'] = $config['last_tag_open']
+			= $config['next_tag_open'] = $config['prev_tag_open'] = $open_tag;
+		$config['num_tag_close'] = $config['first_tag_close'] = $config['last_tag_close']
+			= $config['next_tag_close'] = $config['prev_tag_close'] = $close_tag;
+		
+		$config['cur_tag_open'] = '<div class=paging_cur_box>';
+		$config['cur_tag_close'] = '</div>';
 
 		$this->pagination->initialize($config);
 
@@ -67,7 +78,5 @@ class Entry extends userController {
 		$data["postentry"] = $this->entrymodel->get_multiple_by_paging($config['per_page'], $page);
 		
 		$this->loadView('entry/multiple', $data);
-		
-		
 	}
 }

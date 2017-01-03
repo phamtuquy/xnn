@@ -56,7 +56,34 @@ body {
     right: 30px;
 }
 
-.paging_box {
+.paging_container {
 	padding-top: 5px;
-	padding-bottom: 10px;
+	padding-bottom: 13px;
+}
+
+.paging_container a{
+	font-family: Tahoma;
+	font-size: 12pt;
+	color: white;
+	text-decoration: none;
+}
+
+.paging_link_box {
+	border: 1px solid #ec5656;
+	display: inline;
+	padding: 7px;
+	/*width: 22px;*/
+	height: 22px;
+	position: relative;
+	margin: 5px;
+}
+
+.paging_cur_box{
+	font-family: Tahoma;
+	display: inline;
+	font-size: 12pt;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 7px;
 }
