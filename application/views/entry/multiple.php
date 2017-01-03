@@ -50,7 +50,7 @@
                 foreach ($postentry as $key => $value ){//$key => $value) {
     ?>
                     <a href="/" onclick="return false;">
-    				    <img class="entry_img" src="<?php echo base_url()?>/public/upload/<?php echo $value->imageurl; ?>" id=<?php echo $value->id ?> />
+    				    <img class="entry_img" src="<?php echo base_url()?>/public/upload/small/<?php echo $value->imageurl; ?>" id=<?php echo $value->id ?> />
     				</a>
     <?php }
         } ?>

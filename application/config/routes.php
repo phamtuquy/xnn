@@ -51,6 +51,9 @@ $route['tuyet'] = 'entry/multiple/1';
 $route['tuyet/(:num)'] = 'entry/multiple/$1';
 
 $route['admin/newentry'] = 'admin/postentry/newentry';
+$route['admin/test'] = 'admin/postentry/test';
+$route['admin/genallthumb'] = 'admin/postentry/genallthumb';
+
 
 
 /* End of file routes.php */

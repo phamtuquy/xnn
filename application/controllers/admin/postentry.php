@@ -14,27 +14,34 @@ class PostEntry extends adminController {
 
 			$tempFile = $_FILES['file']['tmp_name'];
 
-			//$targetPath = dirname(__FILE__) . base_url() . 'public/upload/';
 			$targetPath = $_SERVER['DOCUMENT_ROOT'] . parse_url(base_url() . 'public/upload/', PHP_URL_PATH);
-
-			//$targetFile = $_SERVER['DOCUMENT_ROOT'] . $targetPath . $_FILES['file']['name'];
-			$targetFile = $targetPath . $_FILES['file']['name'];
-			//header('Location: http://google.com/' . realpath($targetFile));
-
-            //error_log ($tempFile . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
-            //error_log ($targetFile . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
-            //error_log ($_SERVER['DOCUMENT_ROOT'] . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
-            //error_log ("targetPath: " . $targetPath . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
-            //error_log ($_FILES['file']['name'] . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
-
-            //error_log ((is_dir($targetPath) ? "ok path" : "not good path") . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
-
-            move_uploaded_file($tempFile, $targetFile);
-			//if (move_uploaded_file($tempFile, $targetFile))
-			//    error_log ("File moved ok" . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
-			//else
-			//    error_log ("got ERROR" . "\n", 3, "/home/phamtuquy/Web/application/logs/error.log");
+			$thumbPath = $_SERVER['DOCUMENT_ROOT'] . parse_url(base_url() . 'public/upload/small/', PHP_URL_PATH);
 			
+			$targetFile = $targetPath . $_FILES['file']['name'];
+			$thumbFile = $thumbPath . $_FILES['file']['name'];
+			
+            move_uploaded_file($tempFile, $targetFile);
+            
+            $image_size = getimagesize($targetFile);
+            $image_width = $image_size[0];
+            $image_height = $image_size[1];
+            
+            if ($image_width > $image_height)
+            {
+            	$new_width = 800;
+            	$new_height = $image_height * (800 / $image_width);
+            }
+            else
+            {
+            	$new_width = $image_width * (800 / $image_height);
+            	$new_height = 800;
+            }
+            
+            $this->createThumbnail($targetFile, $thumbFile, $new_width, $new_height, false);
+			
+			//unlink($targetFile);
+			
+			//return;
 			$this->load->model('entrymodel');
 			
 			$entry = array (
@@ -54,5 +61,138 @@ class PostEntry extends adminController {
 			$this -> loadView('admin/entry/newentry');
 		}
 	}
+	
+	public function genallthumb()
+	{
+		$targetPath = '/home/ubuntu/workspace/public/upload/';
+		$thumbPath = '/home/ubuntu/workspace/public/upload/small/';
+			
+		$files = scandir($targetPath);
+		foreach ($files as $file )
+		{
+			echo $file . '<br>';
+			
+			if (!file_exists($targetPath . $file))
+			{
+				echo 'skip: ' . $targetPath . $file;
+				continue;
+			}
+			
+			$image_size = getimagesize($targetPath . $file);
+			
+	        $image_width = $image_size[0];
+	        $image_height = $image_size[1];
+	            
+	        if ($image_width > $image_height)
+	        {
+	        	$new_width = 800;
+	        	$new_height = $image_height * (800 / $image_width);
+			}
+			else
+			{
+				$new_width = $image_width * (800 / $image_height);
+				$new_height = 800;
+			}
+	        
+	        echo '<br>';
+			$this->createThumbnail($targetPath . $file, $thumbPath . $file, $new_width, $new_height, false);
+			//var_dump($image_size);
+		}
+	}
+	
+	public function test()
+	{
+		$targetPath = $_SERVER['DOCUMENT_ROOT'] . parse_url(base_url() . 'public/upload/', PHP_URL_PATH);
+		$thumbPath = $_SERVER['DOCUMENT_ROOT'] . parse_url(base_url() . 'public/upload/small/', PHP_URL_PATH);
+			
+		$targetFile = $targetPath . '466.1426779643[3].jpg';
+		$thumbFile = $thumbPath . '466.1426779643[3].jpg';
+		
+		echo $targetFile;
+		echo '<br>';
+		echo $thumbFile;
+		
+		$image_size = getimagesize($targetFile);
+		var_dump($image_size);
+		
+        $image_width = $image_size[0];
+        $image_height = $image_size[1];
+            
+        if ($image_width > $image_height)
+        {
+        	$new_width = 800;
+        	$new_height = $image_height * (800 / $image_width);
+		}
+		else
+		{
+			$new_width = $image_width * (800 / $image_height);
+			$new_height = 800;
+		}
+        
+        echo '<br>';
+		$this->createThumbnail($targetFile, $thumbFile, $new_width, $new_height, false);
+		var_dump($image_size);
+	}
+	
+	private function createThumbnail($filepath, $thumbpath, $thumbnail_width, $thumbnail_height, $background=false) 
+	{
+	    list($original_width, $original_height, $original_type) = getimagesize($filepath);
+	    
+	    if ($original_width > $original_height) 
+	    {
+	        $new_width = $thumbnail_width;
+	        $new_height = intval($original_height * $new_width / $original_width);
+	    } 
+	    else 
+	    {
+	        $new_height = $thumbnail_height;
+	        $new_width = intval($original_width * $new_height / $original_height);
+	    }
+	    
+	    $dest_x = intval(($thumbnail_width - $new_width) / 2);
+	    $dest_y = intval(($thumbnail_height - $new_height) / 2);
+	
+	    if ($original_type === 1) 
+	    {
+	        $imgt = "ImageGIF";
+	        $imgcreatefrom = "ImageCreateFromGIF";
+	    } 
+	    else if ($original_type === 2) 
+	    {
+	        $imgt = "ImageJPEG";
+	        $imgcreatefrom = "ImageCreateFromJPEG";
+	    } 
+	    else if ($original_type === 3) 
+	    {
+	        $imgt = "ImagePNG";
+	        $imgcreatefrom = "ImageCreateFromPNG";
+	    } 
+	    else 
+	    {
+	        return false;
+	    }
+	
+	    $old_image = $imgcreatefrom($filepath);
+	    $new_image = imagecreatetruecolor($thumbnail_width, $thumbnail_height); // creates new image, but with a black background
+	
+	    // figuring out the color for the background
+	    if(is_array($background) && count($background) === 3) 
+	    {
+	      list($red, $green, $blue) = $background;
+	      $color = imagecolorallocate($new_image, $red, $green, $blue);
+	      imagefill($new_image, 0, 0, $color);
+	    // apply transparent background only if is a png image
+	    } 
+	    else if ($background === 'transparent' && $original_type === 3) 
+	    {
+	      imagesavealpha($new_image, TRUE);
+	      $color = imagecolorallocatealpha($new_image, 0, 0, 0, 127);
+	      imagefill($new_image, 0, 0, $color);
+	    }
+	
+	    imagecopyresampled($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width, $original_height);
+	    $imgt($new_image, $thumbpath);
+	    return file_exists($thumbpath);
+	}	
 
 }
