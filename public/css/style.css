@@ -91,3 +91,14 @@ body {
 .img_a{
 	
 }
+
+.more{
+	padding-bottom: 7px;
+}
+
+.more a{
+	font-family: Tahoma;
+	font-size: 12pt;
+	color: white;
+	text-decoration: none;
+}

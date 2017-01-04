@@ -57,6 +57,7 @@
             }
 		</style>
 
+			<div class=more><a href="/tuyet/">Xem nhiều hơn - Đã hơn</a></div>
 
 			<?php
 				//echo ($firstentries);
