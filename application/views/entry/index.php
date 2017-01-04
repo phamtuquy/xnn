@@ -38,7 +38,7 @@
 				    $(this).click(function(e){
                 		$.basicpopup({
                 			url : '/zoom/' + $id,
-                			btnClose : false
+                			btnClose : true
                 		}, e);
                 		
                 	});
