@@ -102,7 +102,6 @@ class PostEntry extends adminController {
 			}
 			
 			echo '<br>';
-			
 			$this->createThumbnail($targetPath . $file, $thumbPath . $file, $new_width, $new_height, false);
 		}
 	}
@@ -138,17 +137,17 @@ class PostEntry extends adminController {
 		}
         
         echo 'uhuhuh<br>';
-        
 		$this->createThumbnail($targetFile, $thumbFile, $new_width, $new_height, false);
 	}
 	
 	private function createThumbnail($filepath, $thumbpath, $thumbnail_width, $thumbnail_height, $background=false) 
 	{
-		//list($original_width, $original_height, $original_type) = getimagesize($filepath);
+//	    list($original_width, $original_height, $original_type) = getimagesize($filepath);
 		$image_size = getimagesize($filepath);
 		$original_width = $image_size[0];
 		$original_height = $image_size[1];
 		$original_type = $image_size[2];
+		
 		if ($original_width > $original_height) 
 		{
 		    $new_width = $thumbnail_width;
